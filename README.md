@@ -1,30 +1,34 @@
-# rollup-starter-app
+Recreation of https://github.com/microsoft/ApplicationInsights-JS/issues/856
 
-This repo contains a bare-bones example of how to create an application using Rollup, including importing a module from `node_modules` and converting it from CommonJS.
-
-*See also https://github.com/rollup/rollup-starter-lib*
-
-
-## Getting started
-
-Clone this repository and install its dependencies:
-
-```bash
-git clone https://github.com/rollup/rollup-starter-app
-cd rollup-starter-app
+```
 npm install
 ```
 
-The `public/index.html` file contains a `<script src='bundle.js'>` tag, which means we need to create `public/bundle.js`. The `rollup.config.js` file tells Rollup how to create this bundle, starting with `src/main.js` and including all its dependencies, including [date-fns](https://date-fns.org).
+```
+npm run build
+```
 
-`npm run build` builds the application to `public/bundle.js`, along with a sourcemap file for debugging.
+Error outputted:
 
-`npm start` launches a server, using [serve](https://github.com/zeit/serve). Navigate to [localhost:3000](http://localhost:3000).
-
-`npm run watch` will continually rebuild the application as your source files change.
-
-`npm run dev` will run `npm start` and `npm run watch` in parallel.
-
-## License
-
-[MIT](LICENSE).
+```sh
+[!] Error: 'LoggingSeverity' is not exported by node_modules/@microsoft/applicationinsights-core-js/browser/applicationinsights-core-js.min.js
+https://rollupjs.org/guide/en#error-name-is-not-exported-by-module-
+node_modules/@microsoft/applicationinsights-common/dist-esm/Telemetry/Common/DataSanitizer.js (3:9)
+1: // Copyright (c) Microsoft Corporation. All rights reserved.
+2: // Licensed under the MIT License.
+3: import { LoggingSeverity, _InternalMessageId } from '@microsoft/applicationinsights-core-js';
+            ^
+4: var DataSanitizer = /** @class */ (function () {
+5:     function DataSanitizer() {
+Error: 'LoggingSeverity' is not exported by node_modules/@microsoft/applicationinsights-core-js/browser/applicationinsights-core-js.min.js
+    at error (/Users/sawyer/Dev/Misc/appinsights-rollup/node_modules/rollup/dist/rollup.js:9236:30)
+    at Module.error (/Users/sawyer/Dev/Misc/appinsights-rollup/node_modules/rollup/dist/rollup.js:12909:9)
+    at handleMissingExport (/Users/sawyer/Dev/Misc/appinsights-rollup/node_modules/rollup/dist/rollup.js:12832:21)
+    at Module.traceVariable (/Users/sawyer/Dev/Misc/appinsights-rollup/node_modules/rollup/dist/rollup.js:13180:17)
+    at ModuleScope.findVariable (/Users/sawyer/Dev/Misc/appinsights-rollup/node_modules/rollup/dist/rollup.js:11953:39)
+    at FunctionScope.findVariable (/Users/sawyer/Dev/Misc/appinsights-rollup/node_modules/rollup/dist/rollup.js:2815:67)
+    at ChildScope.findVariable (/Users/sawyer/Dev/Misc/appinsights-rollup/node_modules/rollup/dist/rollup.js:2815:67)
+    at FunctionScope.findVariable (/Users/sawyer/Dev/Misc/appinsights-rollup/node_modules/rollup/dist/rollup.js:2815:67)
+    at ChildScope.findVariable (/Users/sawyer/Dev/Misc/appinsights-rollup/node_modules/rollup/dist/rollup.js:2815:67)
+    at BlockScope.findVariable (/Users/sawyer/Dev/Misc/appinsights-rollup/node_modules/rollup/dist/rollup.js:2815:67)
+```
