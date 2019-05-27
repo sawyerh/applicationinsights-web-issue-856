@@ -12,15 +12,16 @@ export default {
       browser: true // resolve using "browser" field from node_module
     }),
     commonjs({
-      namedExports: {
-        "@microsoft/applicationinsights-core-js/browser/applicationinsights-core-js.min": [
-          "_InternalMessageId",
-          "AppInsightsCore",
-          "CoreUtils",
-          "DiagnosticLogger",
-          "LoggingSeverity"
-        ]
-      }
-    }) // convert CommonJS to ES
+      // Defining namedExports fixes the issue:
+      // namedExports: {
+      //   "@microsoft/applicationinsights-core-js/browser/applicationinsights-core-js.min": [
+      //     "_InternalMessageId",
+      //     "AppInsightsCore",
+      //     "CoreUtils",
+      //     "DiagnosticLogger",
+      //     "LoggingSeverity"
+      //   ]
+      // }
+    })
   ]
 };
